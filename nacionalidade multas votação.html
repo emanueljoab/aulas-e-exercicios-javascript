@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacionalidade, Multas e Votação</title>
+</head>
+<body>
+    <div id="Saudação"></div>
+    <script>
+        var data = new Date();
+        var hora = data.getHours();
+        var minuto = data.getMinutes();
+        var sauda;
+        if (hora >= 6 && hora < 12)
+            sauda = 'Bom dia';
+        else if (hora >= 12 && hora <= 17)
+            sauda = 'Boa tarde';
+        else if (hora >= 17 && hora <= 24) 
+            sauda = 'Boa noite';
+        else
+            sauda = 'Boa madrugada'
+        document.getElementById('Saudação').innerHTML = `${sauda}. Agora são ${hora}h${minuto}.`
+    </script> 
+        <h1>Nacionalidade</h1>
+    Nasceu em qual país? <input type="text" name="país" id="país">
+    <input type="button" value="Conferir" onclick="Conferir_país()">
+    <div id="res"></div>
+    <script>
+        function Conferir_país() {
+            var país = window.document.getElementById('país')
+            var res = window.document.getElementById('res')
+            res.innerHTML = `<p>Você nasceu em <strong>${país.value}</strong>.</p>`
+            if (país.value == "Brasil" || país.value == "brasil") {
+                res.innerHTML += `<p>Você é <strong>brasileiro</strong>!</p>`
+            } else {
+                res.innerHTML += `<p>Você é <strong>estrangeiro</strong>!</p>`
+            }
+        }
+    </script>
+    <h1>Sistema de multas</h1>
+    Velocidade do carro: <input type="number" name="vel" id="vel"> km/h
+    <input type="button" value="Calcular" onclick="Calcular_vel()">
+    <div id="multa"></div></div>
+    <script>
+        function Calcular_vel() {
+            var vel = window.document.getElementById('vel')
+            var res2 = window.document.getElementById('multa')
+            res2.innerHTML = `<p>Sua velocidade atual é de <strong>${vel.value} km/h</strong>.</p>`
+            if (vel.value > 60) {
+                res2.innerHTML += `<p>Você está <strong>MULTADO</strong> por excesso de velocidade.`
+            }
+            if (vel.value > 29 && vel.value < 61) {
+            res2.innerHTML += `<p>Você está dentro do limite de velocidade.</p>`
+            }
+            if (vel.value < 30) {
+            res2.innerHTML += `Você está <strong>muito lento</strong>.`
+            }
+        }
+    </script>
+    <h1>Votação</h1>
+    Qual sua idade? <input type="number" name="idade" id="idade"> anos.
+    <input type="button" value="Verificar" onclick="Verificar_idade()">
+    <div id="resultado"></div>
+    <script>
+        function Verificar_idade(){
+            var idade = window.document.getElementById('idade')
+            var resultado = window.document.getElementById('resultado')
+            resultado.innerHTML = `<p>Você tem <strong>${idade.value} anos</strong>.</p>`
+            if (idade.value < 16) {
+            resultado.innerHTML += `Não vota.`
+            } else if (idade.value < 18 || idade.value > 69) {
+            resultado.innerHTML += `Voto opcional.`
+            } else {
+            resultado.innerHTML += `Voto obrigatório.`
+            }
+        }
+    </script>
+    <footer>
+        <i><p>&copy; Emanuel L.</p></i>
+    </footer>
+</body>
+</html>
